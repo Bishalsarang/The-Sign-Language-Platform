@@ -4,10 +4,12 @@ ASL translator using CNN
 
 
 Requirements:
+For Anaconda Users:
+ You can download and import the virtual environment file to anoconda environment ["tensorflow_env.yml"](https://github.com/sarangbishal/ASL-translator/blob/master/tensorflow_env.yml) which install all the libraries neeeded for project.
+ 
+Other users can install all requirements from "requirements.txt" file
 
  
-
-
 
 
 
@@ -17,6 +19,9 @@ Requirements:
 3. Inside datasets make subfolders *test_data* and *train_data*
 4. Extract files from downloaded compressed files and put the contents into respective directories.
   The folder structure for both test_data and train_data should look like this
+ 5. Modify variable:
+   NUM_OF_TRAIN IMAGES = 3000 * 28 if you're using datasets from the above link or modify accordingly
+ 
 <pre>
 ├───test_data
    ├───A
