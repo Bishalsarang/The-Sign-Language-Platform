@@ -6,8 +6,6 @@ engine = pyttsx3.init();
 engine.setProperty('rate', 105)
 engine.setProperty('voice', 1)
 
-
-
 def getMaxContour(contours, minArea=-1):
     maxC = None
     maxArea = minArea
@@ -87,7 +85,6 @@ while True:
     cv2.imshow("mask", mask)
     x, y, w, h = cv2.boundingRect(cnt)
 
-
     (x_start, y_start), (x_end, y_end) = centreCrop(x, y, w, h)
 
     # Draw Green Square around the hand
@@ -138,10 +135,7 @@ while True:
             print("Outside ROI")
             continue
         cv2.imwrite("test.jpg", hand)
-        # cv2.imwrite("frame_captured.jpg",)
-        # cv2.rectangle(frame,(0, 0),(roi_width, roi_height),(255,0,0), 3)
         cv2.imwrite("test_bg_less.jpg", hand_bg_rm)
-        cv2.imwrite("detect.jpg", img1)
     if c == 27:
         break
 cap.release()

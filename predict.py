@@ -1,13 +1,10 @@
 import cv2
 import numpy as np
+from variables import *
 from keras.models import load_model
 
-IMAGE_SIZE = 50 #We'll be working with 50 * 50 pixel images
-MODEL_PATH = "trained_model\my_model.h5"
+
 model = load_model(MODEL_PATH)
-LABELS = [chr(c) for c in range(ord('A'), ord('Z') + 1)]
-LABELS.append("nothing")
-LABELS.append("space")
 
 def pre_process(img_array):
     img_array = cv2.cvtColor(img_array, cv2.COLOR_BGR2GRAY)
