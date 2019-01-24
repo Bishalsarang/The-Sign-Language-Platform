@@ -67,6 +67,13 @@ pip install -r requirements.txt
 
 **Running  translator.py**
 After installing all the requirements in your system environment or virtual environment run the translator directly 
+Usage:
+1. Translate from webcam
 ```
 python translator.py
 ```
+2. Translate from image
+```
+python predictimage.py -i "test.jpg"
+```
+Replace test.jpg with your file path
