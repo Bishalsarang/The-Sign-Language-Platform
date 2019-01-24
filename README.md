@@ -62,3 +62,11 @@ pip install -r requirements.txt
 1. Download pre-trained model from [here](https://drive.google.com/file/d/12h1QmfUwd2sJyyk-0xobRSgJN9BxXblZ/view?usp=sharing)
 2.  Modify IMG_PATH and MODEL_PATH
 3. Run the translator.ipynb notebook 
+
+
+
+**Running  translator.py**
+After installing all the requirements in your system environment or virtual environment run the translator directly 
+```
+python translator.py
+```
