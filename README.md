@@ -4,11 +4,15 @@ ASL translator using CNN
 
 
 Requirements:
+Python 3.6 64 bit (Python 3.7 is not officially supported by tensorflow)
+
 For Anaconda Users:
  You can download and import the virtual environment file to anoconda environment ["tensorflow_env.yml"](https://github.com/sarangbishal/ASL-translator/blob/master/tensorflow_env.yml) which install all the libraries neeeded for project.
  
 Other users can install all requirements from "requirements.txt" file
-
+```
+pip install -r requirements.txt
+```
  
 
 
