@@ -1,12 +1,14 @@
 import pyttsx3
-from predict import  *
+from predict import *
 
 
-engine = pyttsx3.init();
+# Initialise Text to speech engine
+engine = pyttsx3.init()
 engine.setProperty('rate', 105)
 engine.setProperty('voice', 1)
 
-def getMaxContour(contours, minArea=-1):
+
+def getMaxContour(contours,  minArea = -1):
     maxC = None
     maxArea = minArea
     for cnt in contours:
@@ -15,6 +17,7 @@ def getMaxContour(contours, minArea=-1):
             maxArea = area
             maxC = cnt
     return maxC
+
 
 def centreCrop(x, y, w, h):
     # Centre cropping the image
@@ -48,7 +51,6 @@ def centreCrop(x, y, w, h):
     return  (x_start, y_start), (x_end, y_end)
 
 
-
 window_name = "ASL"
 frame_height, frame_width, roi_height, roi_width = 480, 900, 600, 300
 cap = cv2.VideoCapture(0)
@@ -61,11 +63,10 @@ while True:
         print("No Frame Captured")
         continue
 
-    # frame = cv2.resize(frame, (0, 0))
-    cv2.rectangle(frame, (0, 0), (roi_width, roi_height), (255, 0, 0),
-                  3)  # bounding box which captures ASL sign to be detected by the system
-    img1 = frame[0: roi_height, 0: roi_width]
+    cv2.rectangle(frame, (0, 0), (roi_width, roi_height), (255, 0, 0), 3)  # bounding box which captures ASL sign to be detected by the system
 
+    # Crop blue rectangular area(ROI)
+    img1 = frame[0: roi_height, 0: roi_width]
     img_ycrcb = cv2.cvtColor(img1, cv2.COLOR_BGR2YCR_CB)
     blur = cv2.GaussianBlur(img_ycrcb, (11, 11), 0)
 
@@ -73,15 +74,17 @@ while True:
     skin_ycrcb_min = np.array((0, 138, 67))
     skin_ycrcb_max = np.array((255, 173, 133))
 
-    mask = cv2.inRange(blur, skin_ycrcb_min,
-                       skin_ycrcb_max)  # detecting the hand in the bounding box using skin detection
+    mask = cv2.inRange(blur, skin_ycrcb_min, skin_ycrcb_max)  # detecting the hand in the bounding box
 
-    kernel = np.ones((2, 2), dtype=np.uint8)
-    mask = cv2.dilate(mask, kernel, iterations=1)
+    kernel = np.ones((2, 2), dtype = np.uint8)
+
+    # Fixes holes in foreground
+    mask = cv2.dilate(mask, kernel, iterations = 1)
 
     contours, _ = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, 2)
-    cnt = getMaxContour(contours, minArea=2000)
-    naya = cv2.bitwise_and(img1, img1, mask=mask)
+    # _, contours, _ = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, 2)
+    cnt = getMaxContour(contours, minArea = 2000)
+    naya = cv2.bitwise_and(img1, img1, mask = mask)
     cv2.imshow("mask", mask)
     x, y, w, h = cv2.boundingRect(cnt)
 
@@ -101,17 +104,16 @@ while True:
     if len(sentence) > 0 and c == ord('s'):
         engine.say(sentence)
         engine.runAndWait()
-    #Clear the sentence
+    # Clear the sentence
     if c == ord('c'):
         sentence = ""
-    #Delete the last character
+    # Delete the last character
     if c == ord('d'):
         sentence = sentence[:-1]
 
     # If  valid hand area is cropped
     if hand.shape[0] != 0 and hand.shape[1] != 0:
         conf, label = which(hand)
-
         conf, label1 = which(hand_bg_rm)
         cv2.putText(frame, label, (50, 50), cv2.FONT_HERSHEY_COMPLEX_SMALL, .7, (0, 0, 255))
         if c == ord('n'):
