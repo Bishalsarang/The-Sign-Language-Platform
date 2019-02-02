@@ -17,6 +17,7 @@ pip install -r requirements.txt
 
 **Running  translator.py**
 After installing all the requirements in your system environment or virtual environment run the translator directly 
+Download [model](https://drive.google.com/open?id=1LyTjb30z2eRcUSnQM8T85TRxW0baEBlF) and set MODEL_PATH
 Usage:
 1. Translate from webcam
 ```
@@ -70,7 +71,7 @@ Replace test.jpg with your file path
 </pre>
 
 **Configuring paths to run the translator:**
-1. Download pre-trained model from [here](https://drive.google.com/file/d/12h1QmfUwd2sJyyk-0xobRSgJN9BxXblZ/view?usp=sharing)
+1. Download pre-trained model from [here](https://drive.google.com/open?id=1LyTjb30z2eRcUSnQM8T85TRxW0baEBlF)
 2.  Modify IMG_PATH and MODEL_PATH
 3. Run the translator.ipynb notebook 
 
