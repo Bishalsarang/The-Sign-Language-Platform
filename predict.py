@@ -7,6 +7,7 @@ from variables import *
 from keras.models import load_model
 
 
+# Loads pretrained CNN Model from MODEL_PATH
 model = load_model(MODEL_PATH)
 
 
@@ -20,7 +21,7 @@ def pre_process(img_array):
     # Reshape array to l * w * channels
     img_array = img_array.reshape(IMAGE_SIZE, IMAGE_SIZE, 1)
 
-    # Normalize th array
+    # Normalize the array
     img_array = img_array / 255.0
 
     # Expand Dimension of the array as our model expects a 4D array

@@ -105,23 +105,22 @@ while True:
         engine.say(sentence)
         engine.runAndWait()
     # Clear the sentence
-    if c == ord('c'):
+    if c == ord('c') or c == ord('C'):
         sentence = ""
     # Delete the last character
-    if c == ord('d'):
+    if c == ord('d') or c == ord('D'):
         sentence = sentence[:-1]
+
+    # Put Space between words
+    if c == ord('m') or c == ord('M'):
+        sentence += " "
 
     # If  valid hand area is cropped
     if hand.shape[0] != 0 and hand.shape[1] != 0:
         conf, label = which(hand)
         conf, label1 = which(hand_bg_rm)
         cv2.putText(frame, label, (50, 50), cv2.FONT_HERSHEY_COMPLEX_SMALL, .7, (0, 0, 255))
-        if c == ord('n'):
-            if label == "nothing":
-                pass
-            elif label == "space":
-                sentence += " "
-            else:
+        if c == ord('n') or c == ord('N'):
                 sentence += label
 
     cv2.putText(frame, sentence, (50, 70), cv2.FONT_HERSHEY_COMPLEX_SMALL, .7, (0, 0, 255))
@@ -138,6 +137,7 @@ while True:
             continue
         cv2.imwrite("test.jpg", hand)
         cv2.imwrite("test_bg_less.jpg", hand_bg_rm)
+    # If pressed ESC break
     if c == 27:
         break
 cap.release()
