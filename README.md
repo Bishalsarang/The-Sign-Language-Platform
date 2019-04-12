@@ -26,5 +26,19 @@ Usage:
 ```
 python translator.py 
 ```
+Controls:
+		Press 'n' to append current letter
+		Press 'm' for space
+		press 'd' to delete last letter from sentence
+		press 's' to speak the translated sentence
+		press 'c' to clear the sentence
+		press ESC key to exit
+
+** Confifuring paths to run ASL.ipynb**
+1. Download datasets from [here](https://drive.google.com/open?id=15BypaqP5X10IiJSiPTpbNP5SDyYoO-xR) or create yout own
+2. Modify TRAIN_DATA_PATH an TEST_DATA_PATH
+3. Train the model
+4. Your model is saved as withbgmodelv1.h5
+5. Use the model to run translator.py by configuring the path in variables.py
 
 
