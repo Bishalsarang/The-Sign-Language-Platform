@@ -6,8 +6,10 @@ Mode : "n" -> Cropp ROI and translates
 
 import pyttsx3
 import argparse
-from predict import *
-
+import cv2
+import numpy as np
+from variables import *
+from keras.models import load_model
 
 # Parse arguments from command line if any
 ap = argparse.ArgumentParser()
@@ -72,6 +74,39 @@ def centreCrop(x, y, w, h):
             y_start, y_end = y, y + mx
     return  (x_start, y_start), (x_end, y_end)
 
+
+# Loads pretrained CNN Model from MODEL_PATH
+model = load_model("trained_model/withbgmodelv1.h5")
+
+
+def pre_process(img_array):
+    """
+    :param img_array: image converted to np array
+    :return:  img_array after pre-processing(converting to grayscale, resizing, normalizing) the  array
+    """
+    img_array = cv2.cvtColor(img_array, cv2.COLOR_BGR2GRAY)
+    img_array = cv2.resize(img_array, (50, 50))
+    # Reshape array to l * w * channels
+    img_array = img_array.reshape(IMAGE_SIZE, IMAGE_SIZE, 1)
+
+    # Normalize the array
+    img_array = img_array / 255.0
+
+    # Expand Dimension of the array as our model expects a 4D array
+    img_array = np.expand_dims(img_array, axis=0)
+    return img_array
+
+
+def which(img_array):
+    """
+    :param img_array: np array of image which is to be predicted
+    :return: confidence precentage and predicted letter
+    """
+    img_array = pre_process(img_array)
+    preds = model.predict(img_array)
+    preds *= 100
+    most_likely_class_index = int(np.argmax(preds))
+    return preds.max(), LABELS[most_likely_class_index]
 
 def withSkinSegment():
     cap = cv2.VideoCapture(0)
@@ -138,7 +173,7 @@ def withSkinSegment():
 
         # If  valid hand area is cropped
         if hand.shape[0] != 0 and hand.shape[1] != 0:
-            conf, label = which(hand_bg_rm)
+            conf, label = which(hand)
             if conf >= THRESHOLD:
                 cv2.putText(frame, label, (50, 50), cv2.FONT_HERSHEY_COMPLEX_SMALL, .7, (0, 0, 255))
             if c == ord('n') or c == ord('N'):
@@ -226,7 +261,7 @@ def withoutSkinSegment():
 
         # If  valid hand area is cropped
         if hand.shape[0] != 0 and hand.shape[1] != 0:
-            conf, label = which(hand_bg_rm)
+            conf, label = which(hand)
             if conf >= THRESHOLD:
                 cv2.putText(frame, label, (50, 50), cv2.FONT_HERSHEY_COMPLEX_SMALL, .7, (0, 0, 255))
             if c == ord('n') or c == ord('N'):

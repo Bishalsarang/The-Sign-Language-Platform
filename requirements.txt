@@ -3,7 +3,6 @@ matplotlib==3.0.2
 numpy==1.16.0
 opencv-python==4.0.0.21
 pypiwin32==223
-python-dateutil==2.7.5
 pyttsx3==2.7
 pywin32==224
 PyYAML==3.13

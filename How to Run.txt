@@ -1,0 +1,16 @@
+After installing all the requirements from "requirements.txt"
+Make sure pretrained model is downloaded
+Open variables.py and change MODEL_PATH to the path where model file lies
+
+Usage:
+To run translator from webcam
+	python translator.py
+	
+	Controls:
+		Press 'n' to append current letter
+		Press 'm' for space
+		press 'd' to delete last letter from sentence
+		press 's' to speak the translated sentence
+		press 'c' to clear the sentence
+		
+		press ESC key to exit
