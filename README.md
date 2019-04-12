@@ -1,9 +1,13 @@
 
 # Sign-Language-Platform
-ASL translator using CNN
+ASL translator using CNN. Currently, it has been trained for 10 letters only ['A', 'C', 'E', 'H', 'I', 'L', 'O', 'U', 'V', 'W']
 
-
-Requirements:
+### Creators:
+1. [Prajwol Lamichhane](https://github.com/prajwollamichhane11) <br>
+2. [Pratik Rajbhandari](https://github.com/Rpratik13) <br>
+3. [Abhay Raut] <br>
+4. [Bishal Sarangkoti](https://sarangbishal.github.io/)<br>
+### Requirements:
 Python 3.6 64 bit (Python 3.7 is not officially supported by tensorflow)
 
 For Anaconda Users:
@@ -27,14 +31,14 @@ Usage:
 python translator.py 
 ```
 Controls:
-		Press 'n' to append current letter
-		Press 'm' for space
-		press 'd' to delete last letter from sentence
-		press 's' to speak the translated sentence
-		press 'c' to clear the sentence
-		press ESC key to exit
+		Press 'n' to append current letter <br>
+		Press 'm' for space <br>
+		press 'd' to delete last letter from sentence <br>
+		press 's' to speak the translated sentence <br>
+		press 'c' to clear the sentence <br>
+		press ESC key to exit <br>
 
-** Confifuring paths to run ASL.ipynb**
+** Configuring paths to run ASL.ipynb**
 1. Download datasets from [here](https://drive.google.com/open?id=15BypaqP5X10IiJSiPTpbNP5SDyYoO-xR) or create yout own
 2. Modify TRAIN_DATA_PATH an TEST_DATA_PATH
 3. Train the model
