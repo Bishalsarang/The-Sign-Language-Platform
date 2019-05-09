@@ -2,11 +2,17 @@
 # Sign-Language-Platform
 ASL translator using CNN. Currently, it has been trained for 10 letters only ['A', 'C', 'E', 'H', 'I', 'L', 'O', 'U', 'V', 'W']
 
+### What it does?
+It translates American Sign Language from live webcam to text and then to speech. 
+
 ### Creators:
 1. [Prajwol Lamichhane](https://github.com/prajwollamichhane11) <br>
 2. [Pratik Rajbhandari](https://github.com/Rpratik13) <br>
 3. [Abhay Raut] <br>
 4. [Bishal Sarangkoti](https://sarangbishal.github.io/)<br>
+
+### Screenshots:
+![enter image description here](https://github.com/sarangbishal/The-Sign-Language-Platform/blob/master/sc.gif?raw=true)
 ### Requirements:
 Python 3.6 64 bit (Python 3.7 is not officially supported by tensorflow)
 
@@ -30,19 +36,17 @@ Usage:
 ```
 python translator.py 
 ```
-Controls:
-		Press 'n' to append current letter <br>
-		Press 'm' for space <br>
-		press 'd' to delete last letter from sentence <br>
-		press 's' to speak the translated sentence <br>
-		press 'c' to clear the sentence <br>
-		press ESC key to exit <br>
+**Controls**:
+		Press `n` to append current letter <br>
+		Press `m` for space <br>
+		Press `d` to delete last letter from sentence <br>
+		Press `s` to speak the translated sentence <br>
+		Press `c` to clear the sentence <br>
+		Press `ESC` key to exit <br>
 
-** Configuring paths to run ASL.ipynb**
-1. Download datasets from [here](https://drive.google.com/open?id=15BypaqP5X10IiJSiPTpbNP5SDyYoO-xR) or create yout own
-2. Modify TRAIN_DATA_PATH an TEST_DATA_PATH
+**Configuring paths to run ASL.ipynb**
+1. Download datasets from [here](https://drive.google.com/open?id=15BypaqP5X10IiJSiPTpbNP5SDyYoO-xR) or create your own
+2. Modify `TRAIN_DATA_PATH` and `TEST_DATA_PATH`
 3. Train the model
-4. Your model is saved as withbgmodelv1.h5
-5. Use the model to run translator.py by configuring the path in variables.py
-
-
+4. Your model is saved as `withbgmodelv1.h5`
+5. Use the model to run `translator.py` by configuring the path in `variables.py`
