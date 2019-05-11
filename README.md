@@ -14,7 +14,7 @@ It translates American Sign Language from live webcam to text and then to speech
 ### Screenshots:
 ![enter image description here](https://github.com/sarangbishal/The-Sign-Language-Platform/blob/master/sc.gif?raw=true)
 ### Requirements:
-Python 3.6 64 bit (Python 3.7 is not officially supported by tensorflow)
+![Python 3.6 64 bit](https://www.python.org/downloads/release/python-368/) (Python 3.7 is not officially supported by tensorflow)
 
 For Anaconda Users:
  You can download and import the virtual environment file to anoconda environment ["tensorflow_env.yml"](https://github.com/sarangbishal/ASL-translator/blob/master/tensorflow_env.yml) which install all the libraries neeeded for project.
