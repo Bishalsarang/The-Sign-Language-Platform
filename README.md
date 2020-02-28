@@ -12,7 +12,7 @@ It translates American Sign Language from live webcam to text and then to speech
 4. [Bishal Sarangkoti](https://sarangbishal.github.io/)<br>
 
 ### Screenshots:
-![enter image description here](https://github.com/sarangbishal/The-Sign-Language-Platform/blob/master/sc.gif?raw=true)
+![enter image description here](https://github.com/Bishalsarang/The-Sign-Language-Platform/blob/master/sc.gif?raw=true)
 ### Requirements:
 ![Python 3.6 64 bit](https://www.python.org/downloads/release/python-368/) (Python 3.7 is not officially supported by tensorflow)
 
