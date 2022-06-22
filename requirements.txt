@@ -1,6 +1,6 @@
 Keras==2.2.4
 matplotlib==3.0.2
-numpy==1.16.0
+numpy==1.22.0
 opencv-python==4.0.0.21
 pypiwin32==223
 pyttsx3==2.7
